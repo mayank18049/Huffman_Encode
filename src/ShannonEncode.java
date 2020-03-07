@@ -8,7 +8,7 @@ import static java.lang.Math.*;
 
 public class ShannonEncode {
     public static void Shannon(int i,int j,Node[] nodeArr,Node currRoot,String path){
-        System.out.println(i+" "+j);
+//        System.out.println(i+" "+j);
         if (j<=i){
             currRoot.setCharacter(nodeArr[i].getCharacter());
             nodeArr[i].setPath(path);
@@ -82,7 +82,7 @@ public class ShannonEncode {
             nodeArr[j]=new Node(c.toString(),frequency.get(c));
             j++;
         }
-        System.out.println(Arrays.toString(nodeArr));
+//        System.out.println(Arrays.toString(nodeArr));
 
         Arrays.sort(nodeArr,new ValueComparator());
 //        System.out.println(Arrays.toString(nodeArr));
