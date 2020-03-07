@@ -25,6 +25,9 @@ public class Decode {
         }
 
         Node temp = map.getRoot();
+        //Timing function
+        int words=0;
+        long startTime=System.nanoTime();
         for (int i = 0; i < code.length(); i++) {
             Character c = code.charAt(i);
             if (Character.getNumericValue(c) == 1) {
@@ -36,7 +39,7 @@ public class Decode {
                         message += temp.getCharacter();
                     }
                     temp = map.getRoot().getRight();
-
+                    words++;
 
                 } else {
                     temp = temp.getRight();
@@ -51,7 +54,7 @@ public class Decode {
                         message += temp.getCharacter();
                     }
                     temp = map.getRoot().getLeft();
-
+                    words++;
                 } else {
                     temp = temp.getLeft();
                 }
@@ -60,10 +63,13 @@ public class Decode {
 
 
         }
+        long endTime=System.nanoTime();
+
 
         message += temp.getCharacter();
+        System.out.println("Average Time Taken  "+((endTime-startTime)/words));
         if (temp.getLeft() == null && temp.getRight() == null) {
-            System.out.println(message);
+//            System.out.println(message);
         } else {
             System.out.println("ENCODED.TXT OR MAPPING.TXT ARE COURRPUTED OR CHANGED");
         }

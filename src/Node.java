@@ -7,7 +7,18 @@ public class Node implements Serializable {
     private Node left;
     private Node right;
 
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    String path;
+
     Node() {
+        this.character="";
     }
 
     Node(String character, int value) {

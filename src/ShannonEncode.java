@@ -1,16 +1,55 @@
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.PriorityQueue;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.atan;
+//import java.util.PriorityQueue;
 
-public class Encode {
+public class ShannonEncode {
+    public static void Shannon(int i,int j,Node[] nodeArr,Node currRoot,String path){
+//        System.out.println(i+" "+j);
+        if (j<=i){
+            currRoot.setCharacter(nodeArr[i].getCharacter());
+            nodeArr[i].setPath(path);
+//            System.out.println(currRoot.getCharacter()+" "+i+" " +path);
+            return;
+        }
+        int sum=0;
+        for (int k =i;k<=j;k++){
+            sum+=nodeArr[k].getValue();
+        }
+        int currDiff=sum-2*nodeArr[i].getValue();//Current Partition right before the first element
+
+        int currpartition=i;
+        while (currpartition!=j){
+//            System.out.println(currDiff);
+            currpartition++;
+            int diff=currDiff-2*nodeArr[currpartition].getValue();
+            if (abs(diff)>=currDiff){
+                currpartition--;
+                break;
+            }
+            else{
+                currDiff=abs(diff);
+
+            }
+
+        }
+//        System.out.println(currpartition);
+        currRoot.setLeft(new Node());
+        currRoot.setRight(new Node());
+        Shannon(i,currpartition,nodeArr,currRoot.getLeft(),path+"0");
+        Shannon(currpartition+1,j,nodeArr,currRoot.getRight(),path+"1");
+    }
     public static void main(String[] args) {
         BufferedReader input;
         String line;
         HashMap<Character, Integer> frequency = new HashMap<Character, Integer>();
         HashMap<Character, String> codes = new HashMap<Character, String>();
         String output = null;
-        PriorityQueue<Node> sorted = new PriorityQueue<Node>(new ValueComparator());
+//        PriorityQueue<Node> sorted = new PriorityQueue<Node>(new ValueComparator());
         try {
             input = new BufferedReader(new FileReader(new File("./src/input.txt")));
             line = input.readLine();
@@ -34,29 +73,21 @@ public class Encode {
             }
 
         }
-        for (Character s : frequency.keySet()) {
-            sorted.add(new Node(s.toString(), frequency.get(s)));
-        }
-        if (sorted.size() == 1) {
-            sorted.add(new Node("\n", -1));
-        }
-        while (sorted.size() >= 2) {
-            Node left = sorted.poll();
-            Node right = sorted.poll();
-            String combineChar = left.getCharacter() + right.getCharacter();
-            int combineValue = left.getValue() + right.getValue();
-            Node root = new Node(combineChar, combineValue);
-            root.setLeft(left);
-            root.setRight(right);
-            sorted.add(root);
-        }
-        Tree encoder = new Tree(sorted.poll());
-
+        Node nodeArr[] =new Node[frequency.keySet().size()];
+        int j=0;
         for (Character c : frequency.keySet()) {
-            String code = null;
-            code = encoder.locate(c);
-            codes.put(c, code);
+            nodeArr[j]=new Node(c.toString(),frequency.get(c));
+            j++;
+        }
 
+        Arrays.sort(nodeArr,new ValueComparator());
+//        System.out.println(Arrays.toString(nodeArr));
+        Node root=new Node();
+        Shannon(0,nodeArr.length-1,nodeArr,root,"");
+        Tree encoder = new Tree(root);
+
+        for (int k=0;k<nodeArr.length;k++){
+            codes.put(nodeArr[k].getCharacter().charAt(0),nodeArr[k].getPath());
         }
         for (int i = 0; i < line.length(); i++) {
             Character to_encode = line.charAt(i);
@@ -66,7 +97,7 @@ public class Encode {
                 output += codes.get(to_encode);
             }
         }
-        //Code for saving file
+//        System.out.println(output);
         try {
             File file = new File("./src/encoded.txt");
             if (!file.exists()) {
@@ -88,7 +119,5 @@ public class Encode {
             e.printStackTrace();
             return;
         }
-
-
     }
 }

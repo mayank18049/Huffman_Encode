@@ -27,6 +27,7 @@ public class Tree implements Serializable {
     public String locate(Character c) {
         Node temp = root;
         String path = null;
+
         while (!temp.getCharacter().equals(c.toString())) {
             if (temp.getLeft().getCharacter().contains(c.toString())) {
                 temp = temp.getLeft();
@@ -49,6 +50,7 @@ public class Tree implements Serializable {
         }
         return path;
     }
+
 
 
 }
