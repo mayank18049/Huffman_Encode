@@ -58,7 +58,6 @@ public class Encode {
             codes.put(c, code);
 
         }
-        System.out.println(codes);
         for (int i = 0; i < line.length(); i++) {
             Character to_encode = line.charAt(i);
             if (output == null) {
@@ -88,6 +87,7 @@ public class Encode {
             e.printStackTrace();
             return;
         }
+
 
     }
 }
