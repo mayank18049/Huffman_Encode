@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="average" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="average" />
+    <module name="Huffman_Encode" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

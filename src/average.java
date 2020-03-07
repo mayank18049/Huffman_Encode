@@ -4,10 +4,11 @@ public class average {
         System.out.println("Shannon Encoding in Process");
         ShannonEncode.main(args);
         Decode.main(args);
+        System.out.println("Shannon Encoding in Done");
         System.out.println("HuffMan Encoding in Progress ");
         Encode.main(args);
         Decode.main(args);
-
+        System.out.println("HuffMan Encoding in Done ");
 
 
     }
