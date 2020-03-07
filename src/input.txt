@@ -1,10 +1,1 @@
-this is an example of good input as this contains many alphabets like zxcqyad
-asjdljasdklaskjd alksdj asdlkjasdkl asdnvadfkva skldv dvn adl vadkllsd sdfk.ads j anklad
-adkasjdkladlk asjdldla l k fadjakdj sldaa
-fdfafoiwer eafof afnadsajfk jncjk,af nafk aj dnoadla wf;poewafkjrejgk jarejfaewlkj.f awenfoaew;d awmfa
-wefoefnaeforefnaeiuf enaof naewof beof;ew nfoe fonfoieoibq3 giuef iugrehfnoiea ngnor fgv
-qra
-faefuarenfoeoenfafoew bfoaemfouarb orae gnirae nfoiej nuireg eoihreo re foan or foinaeofoaef aeof naed
-eawpfjae
-f
-aefaefoaenfoaenfaemfokae f
+this is an example of good input as this contains many alphabets like zxcqyad ALL INPUTS ARE ONE LINE WITH NO NEW LINE SO AND SHOULD BE PRINTED

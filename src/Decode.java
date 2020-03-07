@@ -67,9 +67,10 @@ public class Decode {
 
 
         message += temp.getCharacter();
-        System.out.println("Average Time Taken  "+((endTime-startTime)/words));
+        System.out.println("Average Time Taken  " + ((endTime - startTime) / words) + " nanoSeconds");
         if (temp.getLeft() == null && temp.getRight() == null) {
-//            System.out.println(message);
+            System.out.println("Decoded-Text:");
+            System.out.println(message);
         } else {
             System.out.println("ENCODED.TXT OR MAPPING.TXT ARE COURRPUTED OR CHANGED");
         }
