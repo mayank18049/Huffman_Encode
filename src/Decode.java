@@ -65,7 +65,7 @@ public class Decode {
         if (temp.getLeft() == null && temp.getRight() == null) {
             System.out.println(message);
         } else {
-            System.out.println("ENCODED.TXT OR MAPPING.TXT ARE COURRPUTED OR CHANGE");
+            System.out.println("ENCODED.TXT OR MAPPING.TXT ARE COURRPUTED OR CHANGED");
         }
 
 
