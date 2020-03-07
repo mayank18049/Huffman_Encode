@@ -3,13 +3,12 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.atan;
+import static java.lang.Math.*;
 //import java.util.PriorityQueue;
 
 public class ShannonEncode {
     public static void Shannon(int i,int j,Node[] nodeArr,Node currRoot,String path){
-//        System.out.println(i+" "+j);
+        System.out.println(i+" "+j);
         if (j<=i){
             currRoot.setCharacter(nodeArr[i].getCharacter());
             nodeArr[i].setPath(path);
@@ -73,12 +72,17 @@ public class ShannonEncode {
             }
 
         }
-        Node nodeArr[] =new Node[frequency.keySet().size()];
+
+        Node nodeArr[] =new Node[max(frequency.keySet().size(),2)];
+        if (frequency.keySet().size()==1){
+            nodeArr[1]=new Node("\n",0);
+        }
         int j=0;
         for (Character c : frequency.keySet()) {
             nodeArr[j]=new Node(c.toString(),frequency.get(c));
             j++;
         }
+        System.out.println(Arrays.toString(nodeArr));
 
         Arrays.sort(nodeArr,new ValueComparator());
 //        System.out.println(Arrays.toString(nodeArr));
@@ -86,8 +90,8 @@ public class ShannonEncode {
         Shannon(0,nodeArr.length-1,nodeArr,root,"");
         Tree encoder = new Tree(root);
 
-        for (int k=0;k<nodeArr.length;k++){
-            codes.put(nodeArr[k].getCharacter().charAt(0),nodeArr[k].getPath());
+        for (int k=0;k<nodeArr.length;k++) {
+            codes.put(nodeArr[k].getCharacter().charAt(0), nodeArr[k].getPath());
         }
         for (int i = 0; i < line.length(); i++) {
             Character to_encode = line.charAt(i);

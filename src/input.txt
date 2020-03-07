@@ -1,1 +1,1 @@
-this is an example of good input as this contains many alphabets like zxcqyad ALL INPUTS ARE ONE LINE WITH NO NEW LINE SO AND SHOULD BE PRINTED
+aaaaaaaa
